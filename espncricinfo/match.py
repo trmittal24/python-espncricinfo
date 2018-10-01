@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 from espncricinfo.exceptions import MatchNotFoundError, NoScorecardError
 
+
 class Match(object):
 
     def __init__(self, match_id):
@@ -285,4 +286,4 @@ class Match(object):
             url = "http://www.espncricinfo.com/ci/engine/match/index.html?view=week"
         r = requests.get(url)
         soup = BeautifulSoup(r.text, 'html.parser')
-        return [x['href'].split('/',4)[4].split('.')[0] for x in soup.findAll('a', href=True, text='Scorecard')]
+        return [x['href'].split('/',4)[4].split('.')[0] for x in soup.findAll('a', href=True, text='ScoreCard')]
